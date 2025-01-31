@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Enable CORS
 CORS(app)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET'], strict_slashes=False)
 def get_info():
     return jsonify({
         "email": "nanashifah2@gmail.com",
@@ -17,4 +17,4 @@ def get_info():
     })
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Get the port from Render, default to 5000
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=False)
